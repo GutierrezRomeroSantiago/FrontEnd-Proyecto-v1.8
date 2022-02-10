@@ -1,0 +1,230 @@
+<header class="p-3 bg-dark text-white">
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+				<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+					<use xlink:href="#bootstrap" />
+				</svg>
+			</a>
+
+			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/" aria-label="Example icon button with a home icon">
+						<mat-icon>home</mat-icon>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/crearped"
+						aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-paper-plane"></i>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/user" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-user-plus"></i>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/grafico1" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-chart-bar"></i>
+					</button>
+				</div>
+				<div class="example-button-container">
+					<button mat-fab color="warn" routerLink="/grafico2" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-percent"></i>
+					</button>
+				</div>
+			</ul>
+
+			<div class="text-end">
+				<button type="button" class="btn btn-warning" routerLink="/login">Sign-out</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center table">
+				<span class="tituTabla">Pedidos Normal</span>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<th>precio base</th>
+						<th>dias</th>
+						<th>compañia</th>
+						<th>fecha envio</th>
+						<th>pais salida</th>
+						<th>estado</th>
+						<th>incremento</th>
+						<th>impuesto</th>
+					</tr>
+					<tr *ngFor="let pedido of pedidos; index as i">
+						<td> <a routerLink="/listarprend/{{pedido.id}}">{{pedido.id}}</a> </td>
+						<td>{{pedido.precioBase}}</td>
+						<td>{{pedido.diasAprox}}</td>
+						<td>{{pedido.compania}}</td>
+						<td>{{pedido.fechaEnvio}}</td>
+						<td>{{pedido.paisSalida}}</td>
+						<td>{{pedido.estado}}</td>
+						<td>{{pedido.incremento}}</td>
+						<td>{{pedido.impuesto}}</td>
+						<td>
+							<button class="btn btn-circle btn-warning"><i class="fas fa-times"
+									(click)="eliminarPedido(pedido.id)"></i></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center table">
+				<span class="tituTabla">Pedidos Expres</span>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<th>precio base</th>
+						<th>dias</th>
+						<th>compañia</th>
+						<th>fecha envio</th>
+						<th>pais salida</th>
+						<th>estado</th>
+						<th>material</th>
+						<th>volumen</th>
+						<th>proteccion</th>
+					</tr>
+					<tr *ngFor="let pedido of pedidos1; index as i">
+						<td> <a routerLink="/listarprend/{{pedido.id}}">{{pedido.id}}</a> </td>
+						<td>{{pedido.precioBase}}</td>
+						<td>{{pedido.diasAprox}}</td>
+						<td>{{pedido.compania}}</td>
+						<td>{{pedido.fechaEnvio}}</td>
+						<td>{{pedido.paisSalida}}</td>
+						<td>{{pedido.estado}}</td>
+						<td>{{pedido.material}}</td>
+						<td>{{pedido.volumen}}</td>
+						<td>{{pedido.proteccion}}</td>
+						<td>
+							<button class="btn btn-circle btn-warning"><i class="fas fa-times"
+									(click)="eliminarPedido(pedido.id)"></i></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<select name="OS">
+	<option value="1">Pedido Normal</option>
+	<option value="2">Pedido Express</option>
+</select>
+
+
+<div class="container mt-5">
+	<div class="col-lg-5 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center table">
+				<span class="tituTabla">Crear pedido Normal</span>
+
+				<form>
+					<label for="normal" class="form-label">id</label>
+					<input #valor type="number" class="form-control" id="normal" placeholder="" value="" required>
+
+					<label for="precio" class="form-label">Precio Base</label>
+					<input #Precio type="number" class="form-control" id="precio" placeholder="" value="" required>
+
+					<label for="dias" class="form-label">Dias</label>
+					<input #Dias type="number" class="form-control" id="dias" placeholder="" value="" required>
+
+					<label for="compania" class="form-label">Compañia</label>
+					<input #Compa type="string" class="form-control" id="compania" placeholder="" value="" required>
+
+					<label for="fecha" class="form-label">Fecha de Envio</label>
+					<input #Fecha type="date" class="form-control" id="fecha" placeholder="" value="" required>
+
+					<label for="pais" class="form-label">Pais de salida</label>
+					<input #Pais type="string" class="form-control" id="pais" placeholder="" value="" required>
+
+					<label for="estado" class="form-label">Estado de entrega</label>
+					<input #Estado type="boolean" class="form-control" id="estado" placeholder="" value="" required>
+
+					<label for="incremento" class="form-label">Incremento</label>
+					<input #Incremento type="number" class="form-control" id="incremento" placeholder="" value=""
+						required>
+
+					<label for="impuesto" class="form-label">Impuesto aplicado</label>
+					<input #Impuesto type="number" class="form-control" id="impuesto" placeholder="" value="" required>
+
+					<th colspan="2" class="anadir" style="text-align:center">
+						<button
+							(click)="addNormal(valor.value, Precio.value, Dias.value, Compa.value, Fecha.value, Pais.value, Estado.value, Incremento.value, Impuesto.value); 
+						valor.value=''; Precio.value=''; Dias.value=''; Compa.value=''; Fecha.value=''; Pais.value=''; Estado.value=''; Incremento.value=''; Impuesto.value=''">
+							Añadir
+						</button>
+					</th>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container mt-5">
+	<div class="col-lg-5 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center table">
+				<span class="tituTabla">Crear pedido Expres</span>
+
+				<form>
+					<label for="normal" class="form-label">id</label>
+					<input #valor1 type="number" class="form-control" id="normal" placeholder="" value="" required>
+
+					<label for="precio" class="form-label">Precio Base</label>
+					<input #Precio1 type="number" class="form-control" id="precio" placeholder="" value="" required>
+
+					<label for="dias" class="form-label">Dias</label>
+					<input #Dias1 type="number" class="form-control" id="dias" placeholder="" value="" required>
+
+					<label for="compania" class="form-label">Compañia</label>
+					<input #Compa1 type="string" class="form-control" id="compania" placeholder="" value="" required>
+
+					<label for="fecha" class="form-label">Fecha de Envio</label>
+					<input #Fecha1 type="date" class="form-control" id="fecha" placeholder="" value="" required>
+
+					<label for="pais" class="form-label">Pais de salida</label>
+					<input #Pais1 type="string" class="form-control" id="pais" placeholder="" value="" required>
+
+					<label for="estado" class="form-label">Estado de entrega</label>
+					<input #Estado1 type="boolean" class="form-control" id="estado" placeholder="" value="" required>
+
+					<label for="material" class="form-label">Material del paquete</label>
+					<input #Material type="string" class="form-control" id="material" placeholder="" value="" required>
+
+					<label for="volumen" class="form-label">Volumen del paquete</label>
+					<input #Volumen type="number" class="form-control" id="volumen" placeholder="" value="" required>
+
+					<label for="proteccion" class="form-label">Proteccion del paquete</label>
+					<input #Protec1 type="boolean" class="form-control" id="proteccion" placeholder="" value=""
+						required>
+
+					<th colspan="2" class="anadir" style="text-align:center">
+						<button
+							(click)="addExpres(valor1.value, Precio1.value, Dias1.value, Compa1.value, Fecha1.value, Pais1.value, Estado1.value, Material.value, Volumen.value, Protec1.value); 
+						valor1.value=''; Precio1.value=''; Dias1.value=''; Compa1.value=''; Fecha1.value=''; Pais1.value=''; Estado1.value=''; Material.value=''; Volumen.value=''; Protec1.value=''">
+							Añadir
+						</button>
+					</th>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

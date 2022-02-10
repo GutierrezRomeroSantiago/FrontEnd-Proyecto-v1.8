@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #273746, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+table {
+    background: #a09b83;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #f0e5e5, #8e886b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+* {
+    font-size: 1rem;
+    font-family: 'Advent Pro', sans-serif;
+}
+
+.bodyx {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.mail {
+    font-size: 2rem;
+    text-emphasis: center;
+    color: rgb(201, 0, 0)
+}
+
+.login {
+    width: 100%;
+    max-width: 330px;
+    text-align: center;
+}
+
+.unif {
+    width: 100%;
+}
+
+.inputsLog {
+    width: 90%;
+}
+
+.tituTabla {
+    font-size: 2rem;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,58 @@
+<header class="p-3 bg-dark text-white">
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+				<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+					<use xlink:href="#bootstrap" />
+				</svg>
+			</a>
+
+			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/" aria-label="Example icon button with a home icon">
+					  <mat-icon>home</mat-icon>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/crearped" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-paper-plane"></i>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/user" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-user-plus"></i>
+					</button>
+				</div>
+				<div class="example-button-container">
+					<button mat-fab color="warn" routerLink="/crearped" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-chart-line"></i>
+					</button>
+				</div>
+			</ul>
+
+			<div class="text-end">
+				<button type="button" class="btn btn-warning">Sign-out</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div class="container mt-5">
+<form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1" class="mail" >Email del cliente</label>
+      <input #Email type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1" class="mail mt-3">Cuerpo del email</label>
+      <textarea #Texto class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <th colspan="2" class="anadir" style="text-align:center">
+		<div class="example-button-container mt-3">
+			<button mat-fab color="warn" aria-label="Example icon button with a home icon" (click)="enviarMail(Email.value, Texto.value); Email.value=''; Texto.value=''">
+				<i class="fa-solid fa-share"></i>
+			</button>
+		</div>
+    </th>
+</form>
+</div>

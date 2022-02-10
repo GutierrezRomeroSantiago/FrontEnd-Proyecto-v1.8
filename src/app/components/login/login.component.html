@@ -1,0 +1,22 @@
+
+        <div class="bodyx">
+
+            <div class="login">
+
+                <form [formGroup]="form" (ngSubmit)="logi()">
+                    <img src="../../../assets/img/box.png" width="50%">
+                    <mat-form-field class="inputsLog mt-3" appearance="fill">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput formControlName="usuario">
+                    </mat-form-field>
+                    <mat-form-field class="inputsLog" appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" matInput autocomplete="off" formControlName="password">
+                    </mat-form-field>
+                    <br>
+                    <button type="submit" class="inputsLog" mat-flat-button color="primary"
+                        [disabled]="form.invalid">Log in !</button>
+                </form>
+
+            </div>
+        </div>

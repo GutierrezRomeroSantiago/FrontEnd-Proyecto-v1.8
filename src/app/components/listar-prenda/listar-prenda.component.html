@@ -1,0 +1,251 @@
+<header class="p-3 bg-dark text-white">
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+				<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+					<use xlink:href="#bootstrap" />
+				</svg>
+			</a>
+
+			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/" aria-label="Example icon button with a home icon">
+					  <mat-icon>home</mat-icon>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/crearped" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-paper-plane"></i>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/user" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-user-plus"></i>
+					</button>
+				</div>
+				<div class="example-button-container">
+					<button mat-fab color="warn" routerLink="/crearped" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-chart-line"></i>
+					</button>
+				</div>
+			</ul>
+
+			<div class="text-end">
+				<button type="button" class="btn btn-warning">Sign-out</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div class="container mt-5" *ngIf="prendas.length > 0">
+    <div class="col-lg-11 col-lg-offset-lg-10">
+        <div class="card">
+            <div class="card-body text-center table">
+                <span class="tituTabla">ABRIGOS</span>
+
+                <table class="table">
+                    <tr>
+                        <th>id</th>
+                        <th>Por Mayor</th>
+                        <th>Venta al Publico</th>
+                        <th>fecha Compra</th>
+                        <th>material</th>
+                        <th>pais fabric</th>
+                        <th>manga</th>
+                        <th>cremallera</th>
+                        <th>cuello</th>
+                    </tr>
+                    <tr *ngFor="let prenda of prendas; index as i">
+                        <td> <a routerLink="/listarprend/{{prenda.id}}">{{prenda.id}}</a> </td>
+                        <td>{{prenda.precioXmayor}}</td>
+                        <td>{{prenda.precioPublico}}</td>
+                        <td>{{prenda.fechaCompra}}</td>
+                        <td>{{prenda.material}}</td>
+                        <td>{{prenda.paisFabric}}</td>
+                        <td>{{prenda.manga}}</td>
+                        <td>{{prenda.cremallera}}</td>
+                        <td>{{prenda.cuello}}</td>
+						<td>
+							<button class="btn btn-circle btn-warning"><i class="fas fa-times" (click)="eliminarPrenda(prenda.id)"></i></button>	
+						</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center">
+				<span class="tituTabla">Añadir Abrigo al pedido</span>
+
+				<form>
+
+					<input #idA type="number" class="form-control text-center " id="idA" placeholder="id de la prenda" value="" required>
+					<input #PrecioXa type="number" class="form-control text-center mt-1" id="precioXa" placeholder="Precio al por mayor" value="" required>
+					<input #precioPa type="number" class="form-control text-center mt-1" id="precioPa" placeholder="Precio venta al publico" value="" required>
+					<input #fechaA type="date" class="form-control text-center mt-1" id="fechaA" placeholder="Fecha de compra" value="" required>
+					<input #matA type="string" class="form-control text-center mt-1" id="matA" placeholder="Material de fabricación" value="" required>
+					<input #Pais type="string" class="form-control text-center mt-1" id="pais" placeholder="Pais de fabricacion" value="" required>
+					<input #mangaA type="boolean" class="form-control text-center mt-1" id="mangaA" placeholder="Tipo de Manga del abrigo" value="" required>
+					<input #cremalleraA type="boolean" class="form-control text-center mt-1" id="cremalleraA" placeholder="Cremallera" value="" required>
+					<input #cuelloA type="string" class="form-control text-center mt-1" id="cuelloA" placeholder="Tipo de cuello del abrigo" value="" required>
+
+
+					<th colspan="2" class="anadir" style="text-align:center">
+						<button (click)="addAbrigo(idA.value, PrecioXa.value, precioPa.value, fechaA.value, matA.value, Pais.value, mangaA.value, cremalleraA.value, cuelloA.value); 
+						idA.value=''; PrecioXa.value=''; precioPa.value=''; fechaA.value=''; matA.value=''; Pais.value=''; mangaA.value=''; cremalleraA.value=''; cuelloA.value=''">
+							Añadir
+						</button>
+					</th>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container mt-5" *ngIf="prendas1.length > 0">
+    <div class="col-lg-11 col-lg-offset-lg-10">
+        <div class="card">
+            <div class="card-body text-center table">
+                <span class="tituTabla">JOYAS</span>
+
+                <table class="table">
+                    <tr>
+                        <th>id</th>
+                        <th>Por Mayor</th>
+                        <th>Venta al Publico</th>
+                        <th>fecha Compra</th>
+                        <th>material</th>
+                        <th>pais fabric</th>
+                        <th>quilates</th>
+                        <th>peso</th>
+                    </tr>
+                    <tr *ngFor="let prenda of prendas1; index as i">
+                        <td> <a routerLink="/listarprend/{{prenda.id}}">{{prenda.id}}</a> </td>
+                        <td>{{prenda.precioXmayor}}</td>
+                        <td>{{prenda.precioPublico}}</td>
+                        <td>{{prenda.fechaCompra}}</td>
+                        <td>{{prenda.material}}</td>
+                        <td>{{prenda.paisFabric}}</td>
+                        <td>{{prenda.peso}}</td>
+                        <td>{{prenda.quilates}}</td>
+						<td>
+							<button class="btn btn-circle btn-warning"><i class="fas fa-times" (click)="eliminarPrenda(prenda.id)"></i></button>	
+						</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center">
+				<span class="tituTabla">Añadir Joya al pedido</span>
+
+				<form>
+
+					<input #idJ type="number" class="form-control text-center " id="idA" placeholder="id de la prenda" value="" required>
+					<input #PrecioXJ type="number" class="form-control text-center mt-1" id="precioXa" placeholder="Precio al por mayor" value="" required>
+					<input #precioPJ type="number" class="form-control text-center mt-1" id="precioPa" placeholder="Precio venta al publico" value="" required>
+					<input #fechaJ type="date" class="form-control text-center mt-1" id="fechaA" placeholder="Fecha de compra" value="" required>
+					<input #matJ type="string" class="form-control text-center mt-1" id="matA" placeholder="Material de fabricación" value="" required>
+					<input #PaisJ type="string" class="form-control text-center mt-1" id="pais" placeholder="Pais de fabricacion" value="" required>
+					<input #Quilates type="number" class="form-control text-center mt-1" id="mangaA" placeholder="Quilates de la Joya" value="" required>
+					<input #Peso type="number" class="form-control text-center mt-1" id="cremalleraA" placeholder="Peso de la joya" value="" required>
+
+
+					<th colspan="2" class="anadir" style="text-align:center">
+						<button (click)="addJoya(idJ.value, PrecioXJ.value, precioPJ.value, fechaJ.value, matJ.value, PaisJ.value, Quilates.value, Peso.value); 
+						idJ.value=''; PrecioXJ.value=''; precioPJ.value=''; fechaJ.value=''; matJ.value=''; PaisJ.value=''; Quilates.value=''; Peso.value=''">
+							Añadir
+						</button>
+					</th>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container mt-5" *ngIf="prendas2.length > 0">
+    <div class="col-lg-11 col-lg-offset-lg-10">
+        <div class="card">
+            <div class="card-body text-center table">
+                <span class="tituTabla">CALZADOS</span>
+
+                <table class="table">
+                    <tr>
+                        <th>id</th>
+                        <th>Por Mayor</th>
+                        <th>Venta al Publico</th>
+                        <th>fecha Compra</th>
+                        <th>material</th>
+                        <th>pais fabric</th>
+                        <th>suela</th>
+                        <th>unidades</th>
+                        <th>calidad</th>
+                    </tr>
+                    <tr *ngFor="let prenda of prendas2; index as i">
+                        <td> <a routerLink="/listarprend/{{prenda.id}}">{{prenda.id}}</a> </td>
+                        <td>{{prenda.precioXmayor}}</td>
+                        <td>{{prenda.precioPublico}}</td>
+                        <td>{{prenda.fechaCompra}}</td>
+                        <td>{{prenda.material}}</td>
+                        <td>{{prenda.paisFabric}}</td>
+                        <td>{{prenda.suela}}</td>
+                        <td>{{prenda.unidadesEnmercado}}</td>
+                        <td>{{prenda.calidad}}</td>
+						<td>
+							<button class="btn btn-circle btn-warning"><i class="fas fa-times" (click)="eliminarPrenda(prenda.id)"></i></button>	
+						</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center">
+				<span class="tituTabla">Añadir Calzado al pedido</span>
+
+				<form>
+
+					<input #idC type="number" class="form-control text-center " id="idA" placeholder="id de la prenda" value="" required>
+					<input #PrecioXC type="number" class="form-control text-center mt-1" id="precioXa" placeholder="Precio al por mayor" value="" required>
+					<input #precioPC type="number" class="form-control text-center mt-1" id="precioPa" placeholder="Precio venta al publico" value="" required>
+					<input #fechaC type="date" class="form-control text-center mt-1" id="fechaA" placeholder="Fecha de compra" value="" required>
+					<input #matC type="string" class="form-control text-center mt-1" id="matA" placeholder="Material de fabricación" value="" required>
+					<input #PaisC type="string" class="form-control text-center mt-1" id="pais" placeholder="Pais de fabricacion" value="" required>
+					<input #Suela type="string" class="form-control text-center mt-1" id="mangaA" placeholder="Tipo de suela del calzado" value="" required>
+					<input #UnidadesMer type="number" class="form-control text-center mt-1" id="cremalleraA" placeholder="Unidades exixstentes en mercado" value="" required>
+                    <input #Calidad type="string" class="form-control text-center mt-1" id="cremalleraA" placeholder="Calidad del calzado" value="" required>
+
+
+					<th colspan="2" class="anadir" style="text-align:center">
+						<button (click)="addCalzado(idC.value, PrecioXC.value, precioPC.value, fechaC.value, matC.value, PaisC.value, Suela.value, UnidadesMer.value, Calidad.value); 
+						idC.value=''; PrecioXC.value=''; precioPC.value=''; fechaC.value=''; matC.value=''; PaisC.value=''; Suela.value=''; UnidadesMer.value=''; Calidad.value=''">
+							Añadir
+						</button>
+					</th>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+<header class="p-3 bg-dark text-white">
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+				<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+					<use xlink:href="#bootstrap" />
+				</svg>
+			</a>
+
+			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/" aria-label="Example icon button with a home icon">
+						<mat-icon>home</mat-icon>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/crearped"
+						aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-paper-plane"></i>
+					</button>
+				</div>
+				<div class="example-button-container" style="margin-right: 20px">
+					<button mat-fab color="warn" routerLink="/user" aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-user-plus"></i>
+					</button>
+				</div>
+				<div class="example-button-container">
+					<button mat-fab color="warn" routerLink="/crearped"
+						aria-label="Example icon button with a home icon">
+						<i class="fa-solid fa-chart-line"></i>
+					</button>
+				</div>
+			</ul>
+
+			<div class="text-end">
+				<button type="button" class="btn btn-warning">Sign-out</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+		<div class="card">
+			<div class="card-body text-center table">
+				<span class="tituTabla">USUARIOS DEL SISTEMA</span>
+				<table class="table">
+					<tr>
+						<th>Usuario</th>
+						<th>Contraseña</th>
+					</tr>
+					<tr *ngFor="let us of usuarios index as i">
+						<td>{{us.usuario}}</td>
+						<td>{{us.password}}</td>
+						<td>
+							<button mat-icon-button color="warn" class="mb-2"
+								aria-label="Example icon button with a heart icon">
+								<i class="fa-solid fa-ban" (click)="eliminarUsuario(us.usuario)"></i>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container mt-5">
+	<div class="col-lg-11 col-lg-offset-lg-10">
+	<form class="form-inline">
+		<div class="form-group mx-sm-3 mb-2">
+			<label for="user" class="sr-only">Usuario</label>
+			<input #User type="string" class="form-control" id="user" placeholder="Usuario">
+		</div>
+		<div class="form-group mx-sm-3 mb-2">
+			<label for="inputPassword2" class="sr-only">Password</label>
+			<input #Pass type="password" class="form-control" id="inputPassword2" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary mb-2"
+		(click)="addUser(User.value, Pass.value); User.value=''; Pass.value=''"
+		>Añadir al registro</button>
+	</form>
+</div>
+</div>
